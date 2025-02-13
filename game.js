@@ -1,12 +1,14 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+document.documentElement.requestFullscreen();
+
 // Imposta il canvas per adattarsi allo schermo
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight * 0.5;
 
 const playerImgW = new Image();
-playerImgW.src = "Girl_1/walk.png"; // Cambia con il percorso corretto
+playerImgW.src = "Girl_1/Walk.png"; // Cambia con il percorso corretto
 
 let frameIndex = 0;  // Indice del frame attuale
 const totalFrames = 12; // Numero di frame nello sprite sheet
