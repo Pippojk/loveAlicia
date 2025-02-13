@@ -34,13 +34,13 @@ canvas {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 30px;
 
 }
 
 button {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
 
     margin-top: 4px;
 }
