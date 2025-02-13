@@ -1,6 +1,9 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+
+document.documentElement.requestFullscreen();
+
 // Imposta il canvas per adattarsi allo schermo
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight * 0.5;
