@@ -37,6 +37,11 @@ button {
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  touch-action: manipulation;
 }
 
 button:active {
