@@ -25,6 +25,8 @@ const frameHeighti = 127; // Altezza del frame
 let frameSpeedi = 8; // Ogni quanti aggiornamenti cambiare frame
 let frameCounteri = 0; // Contatore per il cambio frame
 
+const discoImg = new Image();
+discoImg.src = "Girl_1/disco.png";
 
 let level = 1;
 
@@ -36,7 +38,6 @@ const player = {
     y: canvas.height - 80,
     width: 100,
     height: 100,
-    color: "red",
     speed: 3.5,
     velocityY: 0,
     gravity: 0.5,
@@ -46,9 +47,8 @@ const player = {
 const disco = {
     x: canvas.width / 2,
     y: canvas.height-200,
-    width: 400,
+    width: 200,
     height: 200,
-    color: "blue",
 }
 
 // Piattaforma
@@ -57,7 +57,7 @@ const platform = {
     y: canvas.height - 30,
     width: canvas.width,
     height: 30,
-    color: ["yellow", "gray", "green"]
+    color: ["#C2B280", "gray", "green"]
 };
 
 // Movimenti
@@ -122,7 +122,7 @@ function draw() {
     // disegna locale
     if(level == 1){
         ctx.fillStyle = disco.color;
-        ctx.fillRect(disco.x, disco.y, disco.width, disco.height);
+        ctx.drawImage(discoImg, disco.x, disco.y, disco.width, disco.height);
     }
     // Disegna il giocatore
     if (moveLeft || moveRight) {
