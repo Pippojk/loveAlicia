@@ -1,6 +1,21 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+
+const btn =  document.getElementById("btn");
+
+let pressed = false;
+
+function full_screen(){
+    if(!pressed){
+        document.querySelector("body").requestFullscreen();
+        pressed = true;
+    }else{
+        document.exitFullscreen();
+        pressed = false;
+    }
+}
+
 // Imposta il canvas per adattarsi allo schermo
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight * 0.5;
