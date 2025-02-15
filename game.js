@@ -7,7 +7,8 @@ canvas.height = window.innerHeight * 0.5;
 
 let bacio = false;
 
-let level = 7;
+let level = 1;
+let Clevel =level;
 
 let maxLevel = 7;
 
@@ -67,9 +68,6 @@ discoImg.src = "Girl_1/disco.png";
 const negrilI = new Image();
 negrilI.src = "Girl_1/negril.png";
 
-const chairI = new Image();
-chairI.src = "Girl_1/char.png";
-
 const cinemaI = new Image();
 cinemaI.src = "Girl_1/cinema.png";
 
@@ -78,8 +76,25 @@ sushiI.src= "Girl_1/sushi.PNG";
 
 
 
-const backgrounds = ["#87CEEB", "#191970 ", "#87CEEB", "#87CEEB", "#87CEEB" ,"#F5F5DC", "white"]; //azzurro, notte, viola
+const cieloSereno = "Girl_1/sereno/1.png";
 
+const cieloSereno2 = "Girl_1/sereno2/1.png";
+
+const cieloSera = "Girl_1/sera/1.png";
+
+const cieloNotte =  "Girl_1/notte/1.png";
+
+const cucina = "Girl_1/cucina.PNG";
+
+const backgrounds = [cieloSereno2, cieloNotte, cieloSera, cieloSereno, cieloSera, cucina, cieloSera]; //"#F5F5DC", "white" azzurro, notte, viola
+
+
+const back = {
+    x: 0,
+    y: 0,
+    width: canvas.width,
+    height: canvas.height,
+};
 // Giocatore
 const player = {
     x: 50,
@@ -140,7 +155,7 @@ const platform = {
     y: canvas.height - 30,
     width: canvas.width,
     height: 60,
-    color: ["#C2B280", "gray", "#C2B280", "gray", "gray", "#8B5A2B", "white"]
+    color: ["#C2B280", "gray", "#C2B280", "gray", "gray", "#8B5A2B", "#C2B280"]
 };
 
 // Movimenti
@@ -187,7 +202,7 @@ function update() {
     }
 
     if(level == 1 && player.x >= canvas.width - 250 -50 && player.x <= canvas.width - 250 + 50){
-        currentDialog = ["Filippo: era da tanto che", "volevo dirti una cosa", "Alicia: dimmi pure", "Filippo: penso di provare", "qualcosa per te", "Alica: wow, non so cosa dire", "non penso di condividire i tuoi sentimenti", "Filippo: capisco, ora devo andare"];
+        currentDialog = ["Filippo: era da tanto che", "volevo dirti una cosa", "Alicia: dimmi pure", "Filippo: penso di provare", "qualcosa per te", "Alica: wow, non so cosa dire", "grazie per avermelo detto", "Filippo: ora devo andare"];
         showDialogTime = 10;
         isActive = true;
 
@@ -245,26 +260,26 @@ function update() {
 
 // Funzione di disegno
 function draw() {
-    canvas.style.backgroundColor = backgrounds[level-1];
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    
+    let backgroundImg = backgrounds[level - 1];
+
+    if(Clevel != level){
+        canvas.style.background =  "url("+ backgroundImg +") no-repeat center center";
+        canvas.style.backgroundSize = "cover";
+
+        Clevel = level;
+    }
 
     // disegna locale
     if(level == 1){
         ctx.drawImage(discoImg, disco.x, disco.y, disco.width, disco.height);
 
-        ctx.fillStyle = "#FFD700";
-        ctx.beginPath();
-        ctx.arc(100, 100, 50, 0, Math.PI * 2); // Cerchio per il sole
-        ctx.fill();
+        
 
         if(!stillHere) filippo.x = canvas.width - 250;
     }else if(level == 2){
         ctx.drawImage(negrilI, negril.x, negril.y, negril.width, negril.height);
-
-        ctx.drawImage(chairI, chair.x, chair.y, chair.width, chair.height);
 
         filippo.x = canvas.width - 450;
     }else if(level == 4){
@@ -400,7 +415,9 @@ function draw() {
 }
 
 // Avvia il gioco
+
 update();
+
 
 
 function dialogo(){
