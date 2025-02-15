@@ -1,7 +1,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-
 const btn =  document.getElementById("btn");
 
 let pressed = false;
@@ -15,7 +14,6 @@ function full_screen(){
         pressed = false;
     }
 }
-
 // Imposta il canvas per adattarsi allo schermo
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight * 0.5;
@@ -131,37 +129,30 @@ const filippo = {
 
 const disco = {
     x: canvas.width / 2,
-    y: canvas.height-210,
-    width: 350,
-    height: 200,
-}
-
-const chair = {
-    x: canvas.width / 2 - 50,
-    y: canvas.height-20,
-    width: 20,
-    height: 20,
+    y: canvas.height-180,
+    width: 320,
+    height: 180,
 }
 
 const negril = {
     x: canvas.width / 2 - 50,
-    y: canvas.height-200,
-    width: 400,
-    height: 200,
+    y: canvas.height-180,
+    width: 360,
+    height: 180,
 }
 
 const cinema = {
     x: canvas.width - 500,
-    y: canvas.height-200,
-    width: 500,
-    height: 200
+    y: canvas.height-180,
+    width: 460,
+    height: 180
 }
 
 const sushi = {
     x: canvas.width / 2 - 400,
-    y: canvas.height-180,
-    width: 500,
-    height: 200
+    y: canvas.height-160,
+    width: 460,
+    height: 180
 }
 
 // Piattaforma
@@ -244,7 +235,7 @@ function update() {
         showDialogTime = 10;
         isActive = true;
     }else if(level == 7 && player.x >= (canvas.width - 500) / 2  && player.x <= (canvas.width - 50) / 2){
-        currentDialog = ["Filippo: amore mio buon sesto anniversario", "grazie di tutto quello che hai fatto e fai per me", "sei la persona piu importante della mia vita", "la mia fidanzata e la mia migliore amica", "spero che staremo insieme ancora a lungo, ti amo", "Alicia:"];
+        currentDialog = ["Filippo: amore mio buon sesto mesiversario", "grazie di tutto quello che hai fatto e fai per me", "sei la persona piu importante della mia vita", "la mia fidanzata e la mia migliore amica", "spero che staremo insieme ancora a lungo, ti amo", "Alicia:"];
         showDialogTime = 10;
         isActive = true;
     }
@@ -439,14 +430,14 @@ function dialogo(){
     if (showDialogTime > 0 && isActive) {
         ctx.strokeStyle = "black"; // Colore del bordo
         ctx.lineWidth = 2; // Spessore del bordo
-        ctx.strokeRect(player.x - 40, player.y - 50, 300, 40);
+        ctx.strokeRect(player.x - 40, player.y - 10, 300, 40);
 
         ctx.fillStyle = "rgb(254, 254, 254)";
-        ctx.fillRect(player.x - 40, player.y - 50,300, 40);
+        ctx.fillRect(player.x - 40, player.y - 10,300, 40);
         
         ctx.fillStyle = "black";
         ctx.font = "14px Arial";
-        ctx.fillText(currentDialog[curr], player.x - 30, player.y - 25);
+        ctx.fillText(currentDialog[curr], player.x - 30, player.y + 10);
         
         showDialogTime--;
     }
